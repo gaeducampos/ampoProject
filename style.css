@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 10%, rgba(3,136,205,1) 53%, rgba(3,147,212,1) 71%, rgba(0,212,255,1) 100%);
+
+}
+
+
+/* Box model */
+
+.container {
+    border: 2px solid red;
+    max-width: 992px;
+    margin: 0 auto;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.list-container {
+    border: 2px solid greenyellow;
+    width: 100%;
+    height: 25%;
+    align-self: center;
+}
+
+.list-content {
+    padding: 25px 30px;
+    background-color: hotpink;
+    width: 60%;
+    align-self: center;
+}
+
+/* content */
+
+.title {
+    font-size: 3rem;
+    color: white;
+    padding-bottom: 20px;
+}
+
+.fa-book-reader{
+    font-size: 35px;
+}
+
+.input-text {
+    padding: 20px 18px;
+    border-radius: 7px;
+    border: 2px solid black;
+    padding-bottom: 20px;
+}
+
+.insert-content {
+    padding: 20px 18px;
+    border-radius: 7px;
+    background-color: purple;
+    border: none;
+    transition: 0.5s;
+    cursor: pointer;
+
+}
+
+.btn-text {
+    text-decoration: none;
+    font-size: 13px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.insert-content:hover{
+    background-color: yellow;
+}
+
+.insert-content:hover > * {
+    color: black;
+}
+
+
+
