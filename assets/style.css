@@ -1,0 +1,167 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: black;
+
+}
+
+
+/* Box model */
+
+.container {
+    max-width: 992px;
+    margin: 0 auto;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.list-container {
+    width: 100%;
+    height: 25%;
+    align-self: center;
+}
+
+.list-content {
+    padding: 25px;
+    border: 2px solid white;
+    border-radius: 7px;
+    background-color: black;
+    width: 60%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* content */
+
+.title {
+    font-size: 3rem;
+    color: white;
+    padding-bottom: 20px;
+}
+
+.fa-book-reader{
+    font-size: 35px;
+}
+
+.input-text {
+    padding: 20px 18px;
+    border-radius: 7px;
+    border: 2px solid black;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.insert-content {
+    padding: 20px 18px;
+    border-radius: 7px;
+    background-color: purple;
+    border: none;
+    transition: 0.5s;
+    cursor: pointer;
+
+}
+
+.btn-text {
+    text-decoration: none;
+    font-size: 13px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.insert-content:hover{
+    background-color: yellow;
+}
+
+.insert-content:hover > * {
+    color: black;
+}
+
+.label-title {
+    font-size:  25px;
+    margin-right: 20px;
+    color: white;
+}
+
+/* list */
+.list-item {
+    padding-bottom: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.text-continer {
+    width: 80%;
+    background-color: #f4fab4;
+    height: 40px;
+    border-radius: 7px;
+}
+
+
+.list-item-text {
+    color: black;
+    line-height: 40px;
+}
+
+.btn-container {
+    width: 15%;
+}
+
+.delete-btn {
+    background-color: #ff4d4f;
+    height: 40px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.fa-trash {
+    padding-left: 2px;
+}
+
+/* responsive */
+
+@media (max-width: 500px) {
+    
+    /* content */
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .fa-book-reader{
+        font-size: 25px;
+    }
+    
+    .input-text {
+        padding: 15px 12px;
+    }
+    
+    .insert-content {
+        padding: 15px 12px;
+        border-radius: 7px;
+    }
+    
+    .label-title {
+        font-size:  20px;
+        margin-right: 20px;
+        color: white;
+    }
+
+    .list-content {
+    margin-top: 25px;
+    width: 90vw;
+   }
+    
+
+}
