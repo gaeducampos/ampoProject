@@ -18,14 +18,19 @@
         <div class="list-container">
             <h1 class="title">Lista de compras <i class="fas fa-book-reader"></i></i></h1>
             <input type="text" id="content" class="input-text" placeholder="Ingrese elementos">
+            <select name="Lista" id="elements">
+                <option value="type">Seleccione un tipo:</option>
+                <option value="abarrotes">Abarrotes</option>
+                <option value="bebidas">Bebidas</option>
+                <option value="carnes">Carnes</option>
+            </select>
             <button class="insert-content"><a href="#" class="btn-text">Ingresar</a></button>
             <br>
-            <input type="checkbox" class="checkmark">
-            <label for="embutidos" class="label-title"><span> Carnes</span></label>
-            <input type="checkbox">
-            <label for="embutidos" class="label-title">Bebidas</label>
-            <input type="checkbox">
-            <label for="embutidos" class="label-title">Abarrotes</label>
+            <br>
+            <a href="#" class="filter-content" data-id="carnes">Carnes</a>
+            <a href="#" class="filter-content" data-id="abarrotes">Abarrotes</a>
+            <a href="#" class="filter-content" data-id="bebidas">Bebidas</a>
+            <a href="#" class="filter-content" data-id="todos">Lista Completa</a>
         </div>
 
         <div class="list-content">
