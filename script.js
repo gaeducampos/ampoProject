@@ -3,18 +3,16 @@ const listElement = document.getElementById("content");
 const listContent = document.querySelector(".list-content");
 const typeItem = document.getElementById("elements")
 const filterBtns = document.querySelectorAll(".filter-content");
-const deleteBtns = document.querySelectorAll(".delete-btn");
 
 
 
 // simple for
 
 let shoopingList = []
+let sortByCategory = []
 
-let newObject = {
-    value: "Pollo",
-    type: "carne"
-}
+
+let counter = 1;
 
 
 
@@ -22,46 +20,63 @@ function addTextContent(shoppingList) {
     let displayShoppingList = shoppingList.map(function (item) {
         return `
         <div class="list-item">
-            <div class="text-continer">
                 <span class="list-item-text">
                 ${item.value}
                 </span>
-            </div>
-            <div class="btn-container">
-                <button class="delete-btn">
+                <button id=${item.id} class="delete-btn">
                     <a class"delete-text">Borrar<i class="fas fa-trash"></i>
                     </a>
                 </button> 
-            </div>
         </div>
         `
     });
 
+
+
     displayShoppingList = displayShoppingList.join("");
     listContent.innerHTML = displayShoppingList;
 
+    let btnsArray = document.querySelectorAll(".delete-btn");
+
+    btnsArray.forEach((btn) => {
+        btn.addEventListener("click", () => {
+
+            const identifier = parseInt(btn.id)
+
+            shoopingList.splice(shoopingList.findIndex(item => item.id === identifier), 1)
+            sortByCategory.splice(sortByCategory.findIndex(item => item.id === identifier), 1)
+            btn.parentNode.remove();
+
+        })
+    })
+
+
 }
+
+
 
 function setObjectsShoppingList() {
     let itemProperties = {
         value: listElement.value,
-        category: typeItem.options[typeItem.selectedIndex].value
+        category: typeItem.options[typeItem.selectedIndex].value,
+        id: counter++
+
     }
     shoopingList.push(itemProperties);
     listElement.value = "";
-    console.log(shoopingList);
 }
 
 filterBtns.forEach((btn) => {
     btn.addEventListener("click", (event) => {
         const category = event.currentTarget.dataset.id;
-        const sortByCategory = shoopingList.filter(function (item) {
+        sortByCategory = shoopingList.filter(function (item) {
             if (item.category === category) {
                 return item
             }
         });
         if (category === "todos") {
             addTextContent(shoopingList);
+
         } else {
             addTextContent(sortByCategory);
         }
@@ -86,6 +101,7 @@ insertBtn.addEventListener("click", function () {
             addOption.text = typeItem.options[typeItem.selectedIndex].text
 
             typeItem.options[typeItem.selectedIndex] = addOption
+
         }
 
     }
@@ -107,6 +123,7 @@ listElement.addEventListener("keyup", (e) => {
             addOption.text = typeItem.options[typeItem.selectedIndex].text
 
             typeItem.options[typeItem.selectedIndex] = addOption
+
 
         }
     }
