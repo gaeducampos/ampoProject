@@ -10,9 +10,21 @@ const filterBtns = document.querySelectorAll(".filter-content");
 
 let shoopingList = []
 let sortByCategory = []
-
-
 let counter = 1;
+
+function deleteOnShoppingListArray(deleteBtns) {
+    deleteBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+
+            const identifier = parseInt(btn.id)
+            shoopingList.splice(shoopingList.findIndex(item => item.id === identifier), 1)
+            sortByCategory.splice(sortByCategory.findIndex(item => item.id === identifier), 1)
+            btn.parentNode.remove();
+
+        })
+    })
+
+}
 
 
 
@@ -31,25 +43,11 @@ function addTextContent(shoppingList) {
         `
     });
 
-
-
     displayShoppingList = displayShoppingList.join("");
     listContent.innerHTML = displayShoppingList;
 
-    let btnsArray = document.querySelectorAll(".delete-btn");
-
-    btnsArray.forEach((btn) => {
-        btn.addEventListener("click", () => {
-
-            const identifier = parseInt(btn.id)
-
-            shoopingList.splice(shoopingList.findIndex(item => item.id === identifier), 1)
-            sortByCategory.splice(sortByCategory.findIndex(item => item.id === identifier), 1)
-            btn.parentNode.remove();
-
-        })
-    })
-
+    let btnsArray = document.querySelectorAll(".delete-btn")
+    deleteOnShoppingListArray(btnsArray);
 
 }
 
@@ -66,69 +64,78 @@ function setObjectsShoppingList() {
     listElement.value = "";
 }
 
-filterBtns.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-        const category = event.currentTarget.dataset.id;
-        sortByCategory = shoopingList.filter(function (item) {
-            if (item.category === category) {
-                return item
+function setCategoryValue() {
+    let addOption = document.createElement("option");
+    typeItem.appendChild(addOption)
+    addOption.value = typeItem.options[typeItem.selectedIndex].value
+    addOption.text = typeItem.options[typeItem.selectedIndex].text
+
+    typeItem.options[typeItem.selectedIndex] = addOption
+}
+
+const filterOnClick = () => {
+    filterBtns.forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+            const category = event.currentTarget.dataset.id;
+            sortByCategory = shoopingList.filter(function (item) {
+                if (item.category === category) {
+                    return item
+                }
+            });
+            if (category === "todos") {
+                addTextContent(shoopingList);
+
+            } else {
+                addTextContent(sortByCategory);
             }
-        });
-        if (category === "todos") {
-            addTextContent(shoopingList);
-
-        } else {
-            addTextContent(sortByCategory);
-        }
+        })
     })
-})
+}
 
 
 
-insertBtn.addEventListener("click", function () {
-    if (listElement.value === "") {
-        alert("Ingrese texto por favor!")
-    } else {
-        if (typeItem.options[typeItem.selectedIndex].value === "type") {
-            alert("Por favor selecciona una categoría")
+
+const addOnClick = () => {
+    insertBtn.addEventListener("click", function () {
+        if (listElement.value === "") {
+            alert("Ingrese texto por favor!")
         } else {
-            setObjectsShoppingList()
-            addTextContent(shoopingList)
-            listElement.value = "";
-            let addOption = document.createElement("option");
-            typeItem.appendChild(addOption)
-            addOption.value = typeItem.options[typeItem.selectedIndex].value
-            addOption.text = typeItem.options[typeItem.selectedIndex].text
+            if (typeItem.options[typeItem.selectedIndex].value === "type") {
+                alert("Por favor selecciona una categoría")
+            } else {
+                setObjectsShoppingList()
+                addTextContent(shoopingList)
+                listElement.value = "";
+                setCategoryValue();
 
-            typeItem.options[typeItem.selectedIndex] = addOption
+            }
 
         }
-
-    }
-});
-
+    });
+}
 
 
-listElement.addEventListener("keyup", (e) => {
-    if (listElement.value != "" && e.key === "Enter") {
-        if (typeItem.options[typeItem.selectedIndex].value === "type") {
-            alert("Por favor selecciona una categoría")
-        } else {
-            setObjectsShoppingList()
-            addTextContent(shoopingList)
-            listElement.value = "";
-            let addOption = document.createElement("option");
-            typeItem.appendChild(addOption)
-            addOption.value = typeItem.options[typeItem.selectedIndex].value
-            addOption.text = typeItem.options[typeItem.selectedIndex].text
+const addOnEnter = () => {
+    listElement.addEventListener("keyup", (e) => {
+        if (listElement.value != "" && e.key === "Enter") {
+            if (typeItem.options[typeItem.selectedIndex].value === "type") {
+                alert("Por favor selecciona una categoría")
+            } else {
+                setObjectsShoppingList()
+                addTextContent(shoopingList)
+                listElement.value = "";
+                setCategoryValue();
 
-            typeItem.options[typeItem.selectedIndex] = addOption
-
-
+            }
         }
-    }
-    else if (listElement.value === "" && e.key === "Enter") {
-        alert("Ingrese Texto Por favor");
-    }
-});
+        else if (listElement.value === "" && e.key === "Enter") {
+            alert("Ingrese Texto Por favor");
+        }
+    });
+}
+
+
+addOnClick();
+addOnEnter();
+filterOnClick();
 
