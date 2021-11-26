@@ -127,6 +127,10 @@ body {
 
 
 .list-item-text {
+    width: 80%;
+    margin-right: 10px;
+    background: wheat;
+    border-radius: 7px;
     color: black;
     line-height: 40px;
 }
