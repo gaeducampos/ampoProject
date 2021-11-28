@@ -1,24 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+body{
+    font-family: 'Exo', sans-serif;
+    background-color: black;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
 }
 
-body {
-    background-color: black;
-
-}
-
-
 /* Box model */
 
 .container {
-    max-width: 992px;
-    margin: 0 auto;
     height: 100vh;
+    margin: 0 auto;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 992px;
 }
 
 
@@ -29,60 +31,72 @@ body {
 }
 
 .list-content {
+    margin-top: 100px;
     padding: 25px;
-    border: 2px solid white;
+    border: 2px dotted white;
     border-radius: 7px;
-    background-color: black;
     width: 60%;
     align-self: center;
     display: flex;
     flex-direction: column;
 }
 
+.select-items {
+    padding: 12px;
+    background-color: white;
+    border-radius: 7PX;
+}
 
 /* Btns filter */
 
 
 .filter-content {
     text-decoration: none;
+    border: none;
     color: black;
     cursor: pointer;
     padding: 15px 18px;
-    background-color: #87ceeb;
+    background-color: #A4DE02;
     border-radius: 7px;
     margin-left: 10px;
     transition: all 0.5;
 }
 
+
+
 .filter-content:hover {
-    background-color: #ffe4b5;
+    background-color: #76BA1B;
 }
 
 
 /* content */
 
 .title {
-    font-size: 3rem;
     color: white;
     padding-bottom: 20px;
+    font-size: 40px;
 }
 
 .fa-book-reader{
-    font-size: 35px;
+    font-size: 40px;
 }
 
 .input-text {
-    padding: 20px 18px;
+    padding: 12px 45px;
     border-radius: 7px;
-    border: 2px solid black;
-    padding-bottom: 20px;
     margin-bottom: 25px;
 }
 
+.input-text::placeholder {
+    text-align: center;
+    text-transform: uppercase;
+}
+
 .insert-content {
-    padding: 20px 18px;
+    margin-bottom: 40px;
+    padding: 15px 18px;
     border-radius: 7px;
-    background-color: purple;
+    background-color: #008a00;
     border: none;
     transition: 0.5s;
     cursor: pointer;
@@ -98,12 +112,10 @@ body {
 }
 
 .insert-content:hover{
-    background-color: yellow;
+    background-color: #007a00;
 }
 
-.insert-content:hover > * {
-    color: black;
-}
+
 
 .label-title {
     font-size:  25px;
@@ -129,7 +141,7 @@ body {
 .list-item-text {
     width: 80%;
     margin-right: 10px;
-    background: wheat;
+    background: #BFF3B4;
     border-radius: 7px;
     color: black;
     line-height: 40px;
@@ -140,6 +152,7 @@ body {
 }
 
 .delete-btn {
+    width: 15%;
     background-color: #ff4d4f;
     height: 40px;
     border-radius: 7px;
@@ -160,7 +173,7 @@ body {
     /* content */
     
     .title {
-        font-size: 2rem;
+        font-size: 30px;
     }
     
     .fa-book-reader{
@@ -168,11 +181,11 @@ body {
     }
     
     .input-text {
-        padding: 15px 12px;
+        padding: 10px 10px;
     }
     
     .insert-content {
-        padding: 15px 12px;
+        padding: 12px 12px;
         border-radius: 7px;
     }
     
@@ -183,9 +196,25 @@ body {
     }
 
     .list-content {
-    margin-top: 25px;
+    margin-top: 190px;
     width: 90vw;
    }
+
+   .select-items {
+    padding: 10px;
+    background-color: white;
+    border-radius: 7PX;
+    }
+
+    .filter-content {
+        font-size: 12px;
+        line-height: 60px;
+    }
+    
+    .filter-content:hover {
+        background-color: #76BA1B;
+    }
+    
     
 
 }
