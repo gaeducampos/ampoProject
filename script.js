@@ -72,6 +72,8 @@ function setCategoryValue() {
     categoryValue.options[categoryValue.selectedIndex] = addOption
 }
 
+
+
 // Delclaración de función que filtra la categoria, dado los bnts especifícos
 const filterOnClick = () => {
     filterBtns.forEach((btn) => {
@@ -138,7 +140,7 @@ const addElementOnClick = () => {
 
 // Declaración de función que agrega elementos a la lista de manera visual y al arreglo cuando se da enter
 const addElementOnEnter = () => {
-    inputText.addEventListener("keyup", (e) => {
+    document.addEventListener("keyup", (e) => {
         if (inputText.value != "" && e.key === "Enter") {
             if (categoryValue.options[categoryValue.selectedIndex].value === "type") {
                 alert("Por favor selecciona una categoría")
