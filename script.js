@@ -12,23 +12,23 @@ const filterBtns = document.querySelectorAll(".filter-content");
 
 let shoopingList = []
 let shoppingListByCategory = []
+
+
+
 let counter = 1;
 
 
+// Declaración de función que crea los objetos
+function setObjectsShoppingList() {
+    // cración de objeto y donde se le adjunta los valores de sus propiedades
+    let itemProperties = {
+        value: inputText.value,
+        category: categoryValue.options[categoryValue.selectedIndex].value,
+        id: counter++
 
-// function para eleminar cuando se preociona el btn 
-function deleteOnShoppingListArray(deleteBtns) {
-    deleteBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-
-            const identifier = parseInt(btn.id)
-            shoopingList.splice(shoopingList.findIndex(item => item.id === identifier), 1)
-            shoppingListByCategory.splice(shoppingListByCategory.findIndex(item => item.id === identifier), 1)
-            btn.parentNode.remove();
-
-        })
-    })
-
+    }
+    // insertar objetos dentro del arreglo
+    shoopingList.push(itemProperties);
 }
 
 // Función para agregar Elementos de la lista de compras de manera dinamica (Estructura HTML)
@@ -62,19 +62,6 @@ function addTextContent(shoppingList) {
 }
 
 
-// Declaración de función que coloca las propiedades de los objetos
-function setObjectsShoppingList() {
-    // cración de objeto y donde se le adjunta los valores de sus propiedades
-    let itemProperties = {
-        value: inputText.value,
-        category: categoryValue.options[categoryValue.selectedIndex].value,
-        id: counter++
-
-    }
-    // insertar objetos dentro del arreglo
-    shoopingList.push(itemProperties);
-}
-
 // Declaración de función que solicita su categoria cuando se ejecuta
 function setCategoryValue() {
     let addOption = document.createElement("option");
@@ -105,6 +92,22 @@ const filterOnClick = () => {
             }
         })
     })
+}
+
+
+// function para eleminar cuando se preociona el btn 
+function deleteOnShoppingListArray(deleteBtns) {
+    deleteBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+
+            const identifier = parseInt(btn.id)
+            shoopingList.splice(shoopingList.findIndex(item => item.id === identifier), 1)
+            shoppingListByCategory.splice(shoppingListByCategory.findIndex(item => item.id === identifier), 1)
+            btn.parentNode.remove();
+
+        })
+    })
+
 }
 
 
